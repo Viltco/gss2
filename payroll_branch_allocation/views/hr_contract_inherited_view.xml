@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <record id="fleet_vehicle_form_inherited" model="ir.ui.view">
+            <field name="name">hr.contract.inherited</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="model">hr.contract</field>
+            <field name="priority">100</field>
+            <field type="xml" name="arch">
+                <xpath expr="//notebook" position="replace">
+                    <notebook>
+                        <page string="Contract Details" name="other">
+                            <group name="notes_group" string="Notes">
+                                <field name="notes" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Salary Information" name="information">
+                            <group name="main_info">
+                                <group name="salary_and_advantages" string="Monthly Advantages in Cash">
+                                    <label for="wage"/>
+                                    <div class="o_row" name="wage">
+                                        <field name="wage" nolabel="1"/>
+                                        <span>/ month</span>
+                                    </div>
+                                </group>
+                                <group string="Yearly Advantages" name="yearly_advantages"/>
+                            </group>
+                        </page>
+                        <page string="Branch Allocation">
+                            <field name="branch_allocation_id">
+                                <tree sample="1" editable="top">
+                                    <field name="branch_id" optional="show"/>
+                                    <field name="employee_id" optional="show"/>
+                                    <field name="analytic_tag_id" optional="show" widget="many2many_tags" force_save="1"/>
+                                    <field name="date_from"/>
+                                    <field name="date_to"/>
+                                    <field name="percentage" optional="show" sum="Total"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

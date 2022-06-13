@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <record id="branch_allocation_tree" model="ir.ui.view">
+            <field name="name">branch.allocation.line.tree</field>
+            <field name="model">branch.allocation.line</field>
+            <field name="arch" type="xml">
+                <tree sample="1" multi_edit="1" expand="1">
+                    <field name="employee_id" optional="show" force_save="1"/>
+                    <field name="branch_id" optional="show"/>
+                    <field name="analytic_tag_id" force_save="1" optional="hide" widget="many2many_tags"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="percentage" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_hr_blood_group_form" model="ir.ui.view">
+            <field name="name">branch.allocation.line.form</field>
+            <field name="model">branch.allocation.line</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="contract_id"/>
+                                <field name="branch_id"/>
+                                <field name="analytic_tag_id" widget="many2many_tags" force_save="1"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                            <group>
+                                <field name="percentage"/>
+                                <field name="employee_id" force_save="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_branch_allocation" model="ir.actions.act_window">
+            <field name="name">Branch Allocation</field>
+            <field name="res_model">branch.allocation.line</field>
+            <field name="view_id" ref="branch_allocation_tree"/>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create Branch Allocation!
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem
+                id="menu_branch_allocation_root"
+                name="Branch Allocation"
+                parent="hr.menu_human_resources_configuration"
+                action="action_branch_allocation"
+                sequence="10"
+        />
+    </data>
+</odoo>
