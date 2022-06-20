@@ -1,0 +1,36 @@
+<odoo>
+
+    <record id="action_late_mins_server" model="ir.actions.server">
+      <field name="name">Compute Lates</field>
+      <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+      <field name="binding_model_id" ref="hr_attendance.model_hr_attendance"/>
+      <field name="state">code</field>
+      <field name="code"> if records: action = records.compute_late_time()</field>
+    </record>
+
+    <record id="action_waveoff_server" model="ir.actions.server">
+      <field name="name">Compute Waveoff</field>
+      <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+      <field name="binding_model_id" ref="hr_attendance.model_hr_attendance"/>
+      <field name="state">code</field>
+      <field name="code"> if records: action = records.action_waveoff()</field>
+    </record>
+
+    <record id="view_hr_attendance_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.attendance.tree.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='check_out']" position="after">
+                <field name="late_time"/>
+                <field name="late_status"/>
+                <field name="is_pressed" invisible="1"/>
+                <field name="att_status" widget="badge"/>
+<!--                <button string="Test" type="object" name="compute_late_time"/>-->
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

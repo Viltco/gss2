@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_attendance_requisitions,access.attendance.requisitions,model_attendance_requisitions,,1,1,1,1
+access_attendance_requisitions_line,access.attendance.requisitions.line,model_attendance_requisitions_line,,1,1,1,1

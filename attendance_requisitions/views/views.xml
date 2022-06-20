@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+        <record id="view_hr_attendance_requisitions_tree" model="ir.ui.view">
+            <field name="name">attendance.requisitions.tree</field>
+            <field name="model">attendance.requisitions</field>
+            <field name="arch" type="xml">
+                <tree sample="1" multi_edit="1" expand="1">
+                    <field name="req_date"/>
+                    <field name="employee_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_attendance_requisitions_form" model="ir.ui.view">
+            <field name="name">attendance.requisitions.form</field>
+            <field name="model">attendance.requisitions</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button id="button_confirm" name="action_confirm" string="Confirm" type="object"
+                                class="btn-primary" states="draft"/>
+                        <button id="button_approve" name="action_approve" string="Approve" type="object"
+                                class="btn-primary" states="confirm"/>
+                        <button id="button_draft" name="action_draft" string="Reset to Draft" type="object"
+                                class="btn-primary" states="reject"/>
+                        <button id="button_reject" name="action_reject" string="Reject" type="object"
+                                states="confirm" confirm="Are you sure you need to reject ?"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirm,approve,reject"/>
+                    </header>
+                    <sheet>
+                        <group col="4">
+                            <field name="employee_id" required="1"/>
+                            <field name="req_date"/>
+                        </group>
+                        <notebook>
+                            <page string="Attendance Details">
+                                <field name="att_req_line_id">
+                                    <tree sample="1" editable="bottom">
+                                        <field name="att_date"/>
+                                        <field name="check_in"/>
+                                        <field name="late_minutes"/>
+                                        <field name="late_type"/>
+                                        <field name="attendance_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_attendance_requisitions" model="ir.actions.act_window">
+            <field name="name">Attendance Requisition</field>
+            <field name="res_model">attendance.requisitions</field>
+            <field name="view_id" ref="view_hr_attendance_requisitions_tree"/>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create Attendance Requisition!
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem
+                id="menu_ar_root"
+                name="Attendance Requisition"
+                parent="hr_attendance.menu_hr_attendance_root"
+                action="action_attendance_requisitions"
+                sequence="10"
+        />
+    </data>
+</odoo>
