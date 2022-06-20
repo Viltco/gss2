@@ -56,13 +56,13 @@
         </record>
 
         <record id="action_attendance_requisitions" model="ir.actions.act_window">
-            <field name="name">Attendance Requisition</field>
+            <field name="name">Waveoff Requisition</field>
             <field name="res_model">attendance.requisitions</field>
             <field name="view_id" ref="view_hr_attendance_requisitions_tree"/>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    create Attendance Requisition!
+                    create Waveoff Requisition!
                 </p>
             </field>
         </record>
@@ -70,7 +70,7 @@
 
         <menuitem
                 id="menu_ar_root"
-                name="Attendance Requisition"
+                name="Waveoff Requisition"
                 parent="hr_attendance.menu_hr_attendance_root"
                 action="action_attendance_requisitions"
                 sequence="10"
