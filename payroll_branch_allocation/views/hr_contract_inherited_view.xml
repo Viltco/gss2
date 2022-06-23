@@ -31,9 +31,7 @@
                                     <field name="branch_id" optional="show"/>
                                     <field name="employee_id" optional="show"/>
                                     <field name="analytic_tag_id" optional="show" widget="many2many_tags" force_save="1"/>
-                                    <field name="date_from"/>
-                                    <field name="date_to"/>
-                                    <field name="percentage" optional="show" sum="Total"/>
+                                    <field name="percentage" optional="show"/>
                                 </tree>
                             </field>
                         </page>

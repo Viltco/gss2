@@ -7,13 +7,12 @@ class BranchAllocationLines(models.Model):
     _rec_name = 'branch_id'
 
     contract_id = fields.Many2one('hr.contract', string='Contract')
-    employee_id = fields.Many2one('hr.employee', string='Employee', readonly=True, related='contract_id.employee_id')
+    # employee_id = fields.Many2one('hr.employee', string='Employee', related='contract_id.employee_id')
+    employee_id = fields.Many2one('hr.employee', string='Employee')
     branch_id = fields.Many2one('res.branch', default=lambda r: r.env.user.branch_id.id)
     analytic_tag_id = fields.Many2many('account.analytic.tag', string='Analytic Tag',
-                                       domain="[('branch_id', '=', branch_id)]", readonly=True)
+                                       domain="[('branch_id', '=', branch_id)]")
     percentage = fields.Float('Percentage')
-    date_from = fields.Date()
-    date_to = fields.Date()
 
     @api.onchange('branch_id')
     def _onchange_branch_id(self):
