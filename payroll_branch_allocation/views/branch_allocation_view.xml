@@ -8,6 +8,8 @@
                     <field name="employee_id" optional="show" force_save="1"/>
                     <field name="branch_id" optional="show"/>
                     <field name="analytic_tag_id" force_save="1" optional="hide" widget="many2many_tags"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
                     <field name="percentage" optional="show"/>
                 </tree>
             </field>
@@ -25,6 +27,8 @@
                                 <field name="contract_id"/>
                                 <field name="branch_id"/>
                                 <field name="analytic_tag_id" widget="many2many_tags" force_save="1"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
                             </group>
                             <group>
                                 <field name="percentage"/>

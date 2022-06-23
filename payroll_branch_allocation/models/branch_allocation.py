@@ -13,6 +13,8 @@ class BranchAllocationLines(models.Model):
     analytic_tag_id = fields.Many2many('account.analytic.tag', string='Analytic Tag',
                                        domain="[('branch_id', '=', branch_id)]")
     percentage = fields.Float('Percentage')
+    date_from = fields.Date()
+    date_to = fields.Date()
 
     @api.onchange('branch_id')
     def _onchange_branch_id(self):
