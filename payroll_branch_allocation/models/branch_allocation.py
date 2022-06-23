@@ -15,6 +15,14 @@ class BranchAllocationLines(models.Model):
     percentage = fields.Float('Percentage')
     date_from = fields.Date()
     date_to = fields.Date()
+    reference = fields.Char(string='Reference', copy=False,
+                            default=lambda self: _('New'))
+
+    @api.model
+    def create(self, values):
+        if values.get('reference', _('New')) == _('New'):
+            values['reference'] = self.env['ir.sequence'].next_by_code('branch.allocation.line') or _('New')
+        return super(BranchAllocationLines, self).create(values)
 
     @api.onchange('branch_id')
     def _onchange_branch_id(self):

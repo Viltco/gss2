@@ -10,7 +10,7 @@
         Long description of module's purpose
     """,
 
-    'author': "My Company",
+    'author': "M.Rizwan",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -27,6 +27,7 @@
         'security/ir.model.access.csv',
         'views/hr_contract_inherited_view.xml',
         'views/branch_allocation_view.xml',
+        'data/sequence_data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
