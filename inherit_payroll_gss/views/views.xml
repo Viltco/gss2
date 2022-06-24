@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+        <record id="res_config_settings_payroll_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.hr.payroll</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <!--                <xpath expr="//div[hasclass('settings')]/div[hasclass('app_settings_block')]" position="after">-->
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Payroll" string="Payroll" data-key="hr_payroll"
+                         groups="hr_payroll.group_hr_payroll_manager">
+                        <h2>Outstanding Heads</h2>
+                        <div class="row mt16 o_settings_container" name="default_fields_setting_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 id="default_fields">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label string="Loan Balance" for="loan_balance" class="col-lg-4 o_label"/>
+                                            <field name="loan_balance"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label string="PF Balance" for="pf_balance" class="col-lg-4 o_label"/>
+                                            <field name="pf_balance"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label string="Eobi Balance" for="eobi_balance" class="col-lg-4 o_label"/>
+                                            <field name="eobi_balance"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label string="Tax Deduction Till Date" for="eobi_balance"
+                                                   class="col-lg-4 o_label"/>
+                                            <field name="tax_deduction"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_payslip_balance_form_inherit_view" model="ir.ui.view">
+            <field name="name">hr.payslip.inherit.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[@name='account_info']" position="after">
+                    <page string="Outstanding Heads" name="outstanding_heads_info">
+                        <group>
+                           <field name="loan_balance"/>
+                           <field name="eobi_balance"/>
+                           <field name="pf_balance"/>
+                           <field name="tax_deduction"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

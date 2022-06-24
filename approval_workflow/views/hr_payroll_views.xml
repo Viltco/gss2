@@ -1,0 +1,88 @@
+<odoo>
+
+    <record id="view_hr_payslip_run_inherit" model="ir.ui.view">
+        <field name="name">hr.payslip.run.inherit</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//header/button[@name='action_validate']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//header/button[@name='action_validate']" position="after">
+                <button name="action_send_review"
+                        type="object"
+                        states="verify"
+                        string="Send For Review"
+                        class="oe_highlight"
+                />
+                <button name="action_to_review"
+                        type="object"
+                        states="to_review"
+                        string="Review"
+                        class="oe_highlight"
+                        groups="approval_workflow.group_review_payroll_batch"
+                />
+                <button name="action_review_reject"
+                        type="object"
+                        states="to_review"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="approval_workflow.group_review_payroll_batch"
+                />
+                <button name="action_approve"
+                        type="object"
+                        states="to_approve"
+                        string="Approve"
+                        class="oe_highlight"
+                        groups="approval_workflow.group_approve_payroll_batch"
+                />
+                <button name="action_approve_reject"
+                        type="object"
+                        states="to_approve"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="approval_workflow.group_approve_payroll_batch"
+                />
+                <button name="action_reset"
+                        type="object"
+                        states="rejected"
+                        string="Reset to Draft"
+                        class="oe_highlight"
+                />
+            </xpath>
+
+            <xpath expr="//header/button[@name='action_draft']" position="after">
+                <button name="action_validate"
+                        type="object"
+                        string="Create Draft Entry"
+                        states="approved"
+                        class="oe_highlight"
+                        context="{'payslip_generate_pdf': True}"
+                        confirm="Are you sure you want to proceed ?"
+                />
+            </xpath>
+
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="review_by_id"/>
+                <field name="approve_by_id"/>
+            </xpath>
+
+        </field>
+    </record>
+
+<!--    <record id="view_account_hr_payslip_run_inherit" model="ir.ui.view">-->
+<!--        <field name="name">account.hr.payslip.run.inherit</field>-->
+<!--        <field name="model">hr.payslip.run</field>-->
+<!--        <field name="inherit_id" ref="hr_payroll_account.hr_payslip_run_view_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//header/button[@name='action_validate']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>
+
+
