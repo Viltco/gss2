@@ -39,9 +39,6 @@ class BranchAllocationLines(models.Model):
             if line.percentage < 0:
                 raise UserError(f'Negative values are not allowed')
             sum += line.percentage
-        if sum > 0 and sum < 100:
-            req = 100 - sum
-            raise UserError(f'{req}% still needs to be allocated. Total allocation must be equal to 100%.')
         if sum > 100:
             req = 100 - sum
             raise UserError(f'{req}% Allocation difference. Total allocation must be equal to 100%.')
