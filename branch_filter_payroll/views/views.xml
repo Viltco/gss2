@@ -10,7 +10,8 @@
             <field type="xml" name="arch">
                 <xpath expr="//field[@name='wage_type']" position="after">
                     <field name="branch_id" required="1"/>
-                    <field name="company_id" required="1" attrs=" { 'readonly': [('company_counter', '<=', '1' )] }"/>
+                    <field name="company_counter" invisible="1"/>
+                    <field name="company_id" required="1" attrs=" { 'readonly': [('company_counter', '=', 1 )] }"/>
                 </xpath>
 
             </field>
@@ -24,7 +25,8 @@
             <field type="xml" name="arch">
                 <xpath expr="//field[@name='appears_on_payslip']" position="after">
                     <field name="branch_id" required="1"/>
-                    <field name="company_id" required="1" attrs=" { 'readonly': [('company_counter', '<=', '1' )] }"/>
+                    <field name="company_counter" invisible="1"/>
+                    <field name="company_id" required="1" attrs=" { 'readonly': [('company_counter', '=', 1 )] }"/>
                 </xpath>
             </field>
         </record>
@@ -62,7 +64,8 @@
             <field type="xml" name="arch">
                 <xpath expr="//field[@name='country_id']" position="after">
                     <field name="branch_id" required="1"/>
-                    <field name="company_id" required="1" attrs=" { 'readonly': [('company_counter', '<=', '1' )] }"/>
+                    <field name="company_counter" invisible="1"/>
+                    <field name="company_id" required="1" attrs=" { 'readonly': [('company_counter', '=', 1 )] }"/>
                 </xpath>
             </field>
         </record>
